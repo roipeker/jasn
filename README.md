@@ -131,8 +131,11 @@ class HomeMenu extends ParentStateWidget<HomePageState> {
     /// you can "subscribe" to `NotifierValue` (.obs) as if it where InheritedWidgets.
     /// This Stateless will rebuild when `switcher` changes.
     final value = context.listen(state.switcher);
-
-    return Text( "${state.name} switch is: $value");
+    return Column(
+        children:[
+        Observer(() => Text(state.name)),
+        Observer(() => Text("switch is: $value")),
+    ]);
    }
 }
 
